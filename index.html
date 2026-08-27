@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Amazon Rank Tracker — Today's Search, Every Placement</title>
+  <meta name="description" content="Check today's Amazon search for one or more ASINs. Organic, sponsored, and brand placements with traditional Rank and Absolute. Export CSV or Excel.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(46, 196, 182, 0.16), transparent 38%),
+        linear-gradient(165deg, #101820 0%, #15202b 55%, #0c141c 100%);
+      color: #e8eef4;
+      min-height: 100vh;
+      padding: 40px 20px 48px;
+    }
+    .card {
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: rgba(16, 24, 32, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2ec4b6;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .subhead {
+      font-size: 16px;
+      color: #aab4be;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .workflow-section {
+      text-align: left;
+      margin-bottom: 32px;
+      scroll-margin-top: 24px;
+    }
+    .workflow-section__heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2ec4b6;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .workflow-section__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .workflow-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 560px) {
+      .workflow-strip { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    }
+    .workflow-step {
+      background: rgba(16, 24, 32, 0.72);
+      border-radius: 10px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .workflow-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-bar, #2ec4b6);
+    }
+    .workflow-step--check { --accent-bar: linear-gradient(90deg, #26b0a4, #2ec4b6); }
+    .workflow-step--see { --accent-bar: #7ee0d4; }
+    .workflow-step--export { --accent-bar: linear-gradient(90deg, #2ec4b6, #4fd68a); }
+    .workflow-step__label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #7ee0d4;
+    }
+    .workflow-step__feature {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e8f0f8;
+      margin-bottom: 6px;
+    }
+    .workflow-step__detail {
+      font-size: 12px;
+      color: #8a9bb0;
+      line-height: 1.45;
+    }
+
+    .essentials {
+      list-style: none;
+      text-align: left;
+      background: rgba(16, 24, 32, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+    }
+    .essentials li {
+      font-size: 14px;
+      color: #c8d3dc;
+      padding: 5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .essentials li > span { flex: 1; min-width: 0; }
+    .essentials li::before {
+      content: "\2713";
+      color: #2ec4b6;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tiers-heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a9bb0;
+      margin-bottom: 12px;
+    }
+    .tiers {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .tier {
+      flex: 1;
+      background: rgba(16, 24, 32, 0.72);
+      border-radius: 10px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .tier.pro { border-color: #2ec4b6; }
+    .tier-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aab4be;
+      margin-bottom: 4px;
+    }
+    .tier.pro .tier-name { color: #7ee0d4; }
+    .tier-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .tier-desc {
+      font-size: 13px;
+      color: #8a9bb0;
+      line-height: 1.5;
+    }
+
+    .coming {
+      font-size: 14px;
+      color: #8a9bb0;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    a.primary {
+      background: linear-gradient(90deg, #26b0a4, #2ec4b6);
+      color: #0c141c;
+    }
+    a.primary:hover { background: #2ec4b6; }
+    a.secondary {
+      background: transparent;
+      color: #aab4be;
+      border: 1px solid #3d4f63;
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    a.secondary:hover { background: #2d3f52; }
+
+    footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: #4a5a6a;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #5a7a9a;
+      font-size: 12px;
+      padding: 0;
+      display: inline;
+      font-weight: 400;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="6" y="24" width="7" height="12" rx="1" fill="#7ee0d4"/>
+        <rect x="18.5" y="14" width="7" height="22" rx="1" fill="#2ec4b6"/>
+        <rect x="31" y="8" width="7" height="28" rx="1" fill="#26b0a4"/>
+      </svg>
+    </div>
+
+    <p class="eyebrow">Live Amazon Rank Tracker</p>
+    <h1>Today's Amazon search. Every placement. One export.</h1>
+    <p class="subhead">
+      Check one or more ASINs the way a shopper searching those keywords would see them right now &mdash; organic, sponsored, and brand. Traditional Rank and Absolute on the same row. CSV or Excel stays on your computer.
+    </p>
+
+    <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
+      <p class="workflow-section__heading">How it works</p>
+      <h2 id="workflow-title" class="workflow-section__title">Check today's search. See every slot. Export the file.</h2>
+
+      <div class="workflow-strip">
+        <article class="workflow-step workflow-step--check">
+          <p class="workflow-step__label">Check</p>
+          <p class="workflow-step__feature">Today's search</p>
+          <p class="workflow-step__detail">Paste ASINs and keywords. Choose a marketplace. Click Check ranks. No Amazon tab has to stay open. No API keys.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--see">
+          <p class="workflow-step__label">See</p>
+          <p class="workflow-step__feature">Every placement</p>
+          <p class="workflow-step__detail">Organic, sponsored, collection, carousel, store, and video. Rank is place in the full list. Absolute is organic-only.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--export">
+          <p class="workflow-step__label">Export</p>
+          <p class="workflow-step__feature">CSV or Excel</p>
+          <p class="workflow-step__detail">One row per ASIN, keyword, and placement. Append tomorrow's file and pivot by date. Files never leave your machine.</p>
+        </article>
+      </div>
+    </section>
+
+    <ul class="essentials">
+      <li><span>On-demand &mdash; not a trailing 7-day average, not Best Sellers Rank, and not a 24/7 feed</span></li>
+      <li><span>Runs in your browser &mdash; rank results are not uploaded to us</span></li>
+      <li><span>13 Amazon retail marketplaces &mdash; US, UK, CA, EU, JP, IN, MX, AU, NL, BR</span></li>
+      <li><span>Free Excel companion for a folder of exports &mdash; coming with the first store listing</span></li>
+    </ul>
+
+    <p class="tiers-heading">Free vs Pro</p>
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0</div>
+        <div class="tier-desc">200 keywords per run. Organic ranks and keyword index. CSV and Excel. All 13 marketplaces. Default 3 pages per keyword (you can set 1&ndash;7).</div>
+      </div>
+      <div class="tier pro">
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">$28<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
+        <div class="tier-desc">Sponsored and brand placements, zip or postcode checks, unlimited keywords. Subscribe and cancel from the extension. ExtensionPay / Stripe.</div>
+      </div>
+    </div>
+
+    <p class="coming">Chrome Web Store listing is not live yet. This page is the official home and privacy host.</p>
+
+    <div class="links">
+      <a class="btn primary" href="mailto:support@miltonstyles.com?subject=Live%20Amazon%20Rank%20Tracker">Email support@miltonstyles.com</a>
+    </div>
+    <div class="links">
+      <a class="btn secondary" href="/live-amazon-rank-tracker/privacy">Privacy Policy</a>
+      <a class="btn secondary" href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+    </div>
+
+    <footer>
+      &copy; 2026 Milton Styles LLC &nbsp;&middot;&nbsp;
+      <a href="/live-amazon-rank-tracker/privacy">Privacy</a> &nbsp;&middot;&nbsp;
+      <a href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+      <br><br>
+      Building a full PPC optimization workflow beyond rank checks? We&rsquo;re developing tools for full-account bid optimization and deeper automation.
+      <a href="mailto:support@miltonstyles.com?subject=PPC%20Optimization%20Workflow">Drop us a note</a> if that&rsquo;s what you&rsquo;re after.
+      <br><br>
+      Live Amazon Rank Tracker is an independent product and is not affiliated
+      with or endorsed by Amazon.com, Inc.
+    </footer>
+  </div>
+</body>
+</html>
