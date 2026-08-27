@@ -136,26 +136,25 @@
 
   <div class="summary-box">
     <strong>The bottom line</strong>
-    Rank results stay in your browser. We do not upload them.
-    Search HTML is fetched and classified locally. Files download to your computer.
+    We never see your rank results. Checks run in your browser.
+    Files download to your computer.
   </div>
 
   <h2>What This Extension Does</h2>
   <p>
     Live Amazon Rank Tracker is a Chrome extension that checks today's Amazon
-    search for the ASINs and keywords you enter and exports the ranks to CSV or
-    Excel.
+    search for the ASINs and keywords you enter and saves the ranks as CSV or
+    Excel files on your computer.
   </p>
   <p>
-    When you click "Check ranks," the extension fetches Amazon search results in
-    your Chrome profile for the marketplace you selected. It reads those pages
-    in the browser, finds your ASINs, and shows placement rows (type, Rank,
-    Absolute, page) on the app tab.
+    When you click "Check ranks," the extension looks up your keywords on Amazon
+    in this browser &mdash; the same kind of search you would run yourself. It
+    finds the ASINs you entered and shows the results on the extension's app tab.
   </p>
   <p>
-    A Pro check may temporarily set Amazon Deliver-to to the zip or postcode you
-    typed (a glow / address-change request to Amazon), then restore the previous
-    location. Free checks do not change Deliver-to.
+    If you use Pro and type a zip or postcode, the extension asks Amazon to use
+    that delivery location for the check, then puts your previous location back.
+    Free checks do not change your Amazon delivery location.
   </p>
   <p>
     When you click CSV or Excel, the file downloads to your computer. Milton
@@ -170,35 +169,37 @@
     <li>We do not record or store your browsing history</li>
     <li>We do not collect or store the rank results you check or export</li>
     <li>We do not use analytics, crash reporting, or usage tracking of any kind</li>
+    <li>We do not place any tracking pixels or identifiers</li>
   </ul>
 
   <h2>How Your Data Is Handled</h2>
   <p>
-    Rank processing is local. Search HTML is fetched in your browser and
-    classified there. Rank results are not transmitted to Milton Styles LLC or
-    to any server we operate.
+    All rank checking happens inside your browser. Your results are not sent to
+    Milton Styles LLC. They are not sent to our website. They are not uploaded
+    anywhere.
   </p>
   <p>
-    The extension saves a small amount of data in local extension storage: the
-    form you last used (ASINs, keywords, marketplace, options), and the last run
-    so you can export it again. A large run may use extra local storage. That
-    data never leaves your device.
+    The extension remembers a little information on this computer: the form you
+    last used (ASINs, keywords, marketplace, and options), and your last check
+    so you can export it again. That information stays in your browser. It does
+    not go to us.
   </p>
   <p>
-    CSV and Excel files download directly to your computer using your browser's
-    standard file download. We never see those files.
+    CSV and Excel files download directly to your computer using Chrome's normal
+    file download. We never see those files.
   </p>
 
-  <h2>What the Extension Sends to Amazon</h2>
+  <h2>What Happens on Amazon</h2>
   <p>
-    A check fetches Amazon search URLs for the keywords you entered. Those
-    requests use your existing Chrome session, so a signed-in Amazon account on
-    this browser is inherited. We do not strip cookies or force you to log out.
+    A check searches Amazon for the keywords you entered. If you are signed in
+    to Amazon in this browser, Amazon may use that session &mdash; just as it
+    would if you searched Amazon yourself. We do not log you out, and we do not
+    store your Amazon password.
   </p>
   <p>
-    A Pro check may also POST a Deliver-to zip or postcode to Amazon so the
-    search matches the location you typed, then restore the previous location.
-    That request goes to Amazon, not to us.
+    If you use Pro and type a zip or postcode, Amazon is asked to use that
+    delivery location for the check, then restore what you had. That request
+    goes to Amazon, not to us.
   </p>
 
   <h2>Permissions Explained</h2>
@@ -212,58 +213,57 @@
     <tbody>
       <tr>
         <td><code>downloads</code></td>
-        <td>To save the rank export as CSV or Excel on your computer</td>
+        <td>To save the rank file as CSV or Excel on your computer</td>
       </tr>
       <tr>
         <td><code>storage</code></td>
-        <td>To remember the last form and last run locally in your browser</td>
+        <td>To remember the last form and last check in your browser</td>
       </tr>
       <tr>
         <td><code>unlimitedStorage</code></td>
-        <td>So a large last run can stay in local extension storage without the normal size cap</td>
+        <td>So a large last check can stay on this computer and you can export it again</td>
       </tr>
       <tr>
         <td><code>offscreen</code></td>
-        <td>Chrome service workers cannot parse a search-page document. An offscreen page is used only during a check. It is not a visible tab</td>
+        <td>Used only during a check, in the background, to read Amazon search pages. It is not a visible tab and it is not used to browse the web</td>
       </tr>
       <tr>
         <td>Hosts: 13 Amazon retail sites</td>
-        <td>To read today's Amazon search for the marketplace you selected, and to apply or restore Deliver-to for a Pro check. The extension does not run on Amazon until you start a check</td>
+        <td>To run today's Amazon search for the marketplace you selected, and (Pro) to set or restore delivery location for that check. The extension does not run on Amazon until you click Check ranks</td>
       </tr>
       <tr>
         <td>Host: <code>extensionpay.com</code></td>
-        <td>To confirm optional Pro subscription status and open Upgrade / Manage. Rank results are not sent to ExtensionPay</td>
+        <td>For the optional Pro subscription: to confirm paid status and open Upgrade or Manage. Rank results are not sent there</td>
       </tr>
     </tbody>
   </table>
   <p>
-    Supported Amazon hosts: amazon.com, amazon.ca, amazon.co.uk, amazon.de,
+    Supported Amazon sites: amazon.com, amazon.ca, amazon.co.uk, amazon.de,
     amazon.fr, amazon.it, amazon.es, amazon.co.jp, amazon.in, amazon.com.mx,
     amazon.com.au, amazon.nl, amazon.com.br.
   </p>
 
   <h2>Third Parties</h2>
   <p>
-    <strong>Your rank data</strong> is never shared with any third party.
-    The extension has no backend servers and no analytics service.
+    <strong>Your rank results</strong> are never shared with anyone.
+    The extension has no servers of its own and no analytics service.
   </p>
   <p>
-    <strong>Payment processing (Pro tier only):</strong> If you subscribe to the
-    Pro tier, payment processing is handled by
+    <strong>Payment processing (Pro tier only):</strong> If you subscribe to Pro,
+    payment is handled by
     <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a>
     (extensionpay.com) using Stripe. ExtensionPay uses a non-personally-identifiable
-    user identifier — derived from your Chrome browser, not your Amazon account —
-    to verify subscription status. Stripe collects and processes your payment
-    information directly. Full payment method details — including your full card
-    number and security code — are handled exclusively by Stripe and are never
-    visible to Milton Styles LLC. Your name, card information, and payment data
-    are subject to the privacy policies of ExtensionPay and Stripe.
+    identifier from your Chrome browser &mdash; not your Amazon account &mdash; to
+    check subscription status. Stripe collects and processes your payment
+    information directly. Full payment method details &mdash; including your full
+    card number and security code &mdash; are handled exclusively by Stripe and
+    are never visible to Milton Styles LLC. Your name, card information, and
+    payment data are subject to the privacy policies of ExtensionPay and Stripe.
   </p>
   <p>
     <strong>Subscription status check:</strong> When the extension loads, it
-    contacts extensionpay.com to verify your Pro subscription status. No rank
-    results, Amazon account information, or browsing history is included in this
-    request.
+    contacts extensionpay.com to see whether Pro is active. No rank results,
+    Amazon account information, or browsing history is included in that request.
   </p>
 
   <h2>Changes to This Policy</h2>
