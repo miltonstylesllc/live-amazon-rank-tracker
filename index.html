@@ -11,8 +11,8 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(46, 196, 182, 0.16), transparent 38%),
-        linear-gradient(165deg, #101820 0%, #15202b 55%, #0c141c 100%);
+        radial-gradient(circle at top right, rgba(31, 208, 214, 0.14), transparent 38%),
+        linear-gradient(165deg, #0d1520 0%, #111c28 55%, #0a1218 100%);
       color: #e8eef4;
       min-height: 100vh;
       padding: 40px 20px 48px;
@@ -27,7 +27,7 @@
       width: 80px;
       height: 80px;
       margin: 0 auto 24px;
-      background: rgba(16, 24, 32, 0.72);
+      background: rgba(13, 21, 32, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 18px;
       display: flex;
@@ -39,7 +39,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #2ec4b6;
+      color: #1fd0d6;
       margin-bottom: 12px;
     }
     h1 {
@@ -66,7 +66,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #2ec4b6;
+      color: #1fd0d6;
       margin-bottom: 6px;
       text-align: center;
     }
@@ -87,7 +87,7 @@
       .workflow-strip { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     }
     .workflow-step {
-      background: rgba(16, 24, 32, 0.72);
+      background: rgba(13, 21, 32, 0.72);
       border-radius: 10px;
       padding: 14px 14px 16px;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -101,18 +101,18 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: var(--accent-bar, #2ec4b6);
+      background: var(--accent-bar, #1fd0d6);
     }
-    .workflow-step--check { --accent-bar: linear-gradient(90deg, #26b0a4, #2ec4b6); }
-    .workflow-step--see { --accent-bar: #7ee0d4; }
-    .workflow-step--export { --accent-bar: linear-gradient(90deg, #2ec4b6, #4fd68a); }
+    .workflow-step--check { --accent-bar: linear-gradient(90deg, #14b8c0, #1fd0d6); }
+    .workflow-step--see { --accent-bar: #7aeff2; }
+    .workflow-step--export { --accent-bar: linear-gradient(90deg, #1fd0d6, #3adce2); }
     .workflow-step__label {
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 6px;
-      color: #7ee0d4;
+      color: #7aeff2;
     }
     .workflow-step__feature {
       font-size: 15px;
@@ -133,7 +133,7 @@
       line-height: 1.6;
       margin: 16px 0 24px;
       padding: 12px 14px;
-      background: rgba(16, 24, 32, 0.72);
+      background: rgba(13, 21, 32, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 10px;
     }
@@ -141,7 +141,7 @@
     .essentials {
       list-style: none;
       text-align: left;
-      background: rgba(16, 24, 32, 0.72);
+      background: rgba(13, 21, 32, 0.72);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 10px;
       padding: 18px 22px;
@@ -159,7 +159,7 @@
     .essentials li > span { flex: 1; min-width: 0; }
     .essentials li::before {
       content: "\2713";
-      color: #2ec4b6;
+      color: #1fd0d6;
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 1px;
@@ -181,12 +181,12 @@
     }
     .tier {
       flex: 1;
-      background: rgba(16, 24, 32, 0.72);
+      background: rgba(13, 21, 32, 0.72);
       border-radius: 10px;
       padding: 16px 18px;
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .tier.pro { border-color: #2ec4b6; }
+    .tier.pro { border-color: #1fd0d6; }
     .tier-name {
       font-size: 11px;
       font-weight: 700;
@@ -195,7 +195,7 @@
       color: #aab4be;
       margin-bottom: 4px;
     }
-    .tier.pro .tier-name { color: #7ee0d4; }
+    .tier.pro .tier-name { color: #7aeff2; }
     .tier-price {
       font-size: 18px;
       font-weight: 700;
@@ -232,10 +232,10 @@
       transition: background 0.2s, border-color 0.2s;
     }
     a.primary {
-      background: linear-gradient(90deg, #26b0a4, #2ec4b6);
-      color: #0c141c;
+      background: linear-gradient(90deg, #14b8c0, #1fd0d6);
+      color: #04262a;
     }
-    a.primary:hover { background: #2ec4b6; }
+    a.primary:hover { background: #3adce2; }
 
     footer {
       margin-top: 32px;
@@ -257,9 +257,9 @@
   <div class="card">
     <div class="icon">
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="6" y="24" width="7" height="12" rx="1" fill="#7ee0d4"/>
-        <rect x="18.5" y="14" width="7" height="22" rx="1" fill="#2ec4b6"/>
-        <rect x="31" y="8" width="7" height="28" rx="1" fill="#26b0a4"/>
+        <rect x="6" y="24" width="7" height="12" rx="1" fill="#7aeff2"/>
+        <rect x="18.5" y="14" width="7" height="22" rx="1" fill="#1fd0d6"/>
+        <rect x="31" y="8" width="7" height="28" rx="1" fill="#14b8c0"/>
       </svg>
     </div>
 
