@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Amazon Rank Tracker — Today's Search, Every Placement</title>
-  <meta name="description" content="Check today's Amazon search for one or more ASINs. Organic, sponsored, and brand placements with traditional Rank and Absolute. Export CSV or Excel.">
+  <meta name="description" content="Check today's Amazon search for one or more ASINs. Every key placement detected: organic, sponsored, collection, carousel, store, and video. Analysis-friendly CSV or Excel. Rank and Absolute. Pro Trends to visualize, filter, and export. Free Excel workbook for rank over time.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -27,13 +27,12 @@
       width: 80px;
       height: 80px;
       margin: 0 auto 24px;
-      background: rgba(13, 21, 32, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
     }
+    .icon svg { display: block; }
     .eyebrow {
       font-size: 12px;
       font-weight: 600;
@@ -103,9 +102,14 @@
       height: 3px;
       background: var(--accent-bar, #1fd0d6);
     }
-    .workflow-step--check { --accent-bar: linear-gradient(90deg, #14b8c0, #1fd0d6); }
-    .workflow-step--see { --accent-bar: #7aeff2; }
-    .workflow-step--export { --accent-bar: linear-gradient(90deg, #1fd0d6, #3adce2); }
+    /* Pillar cap colors: teal family for now (product accent). History used
+       orange / cyan / gold because those came from the YouTube Remotion schematic.
+       When Rank Tracker gets a promo video, A/B same-cap vs distinct caps there
+       first; if distinct wins, bring those tokens back here. Do not invent a
+       second accent just for this strip. */
+    .workflow-step--measure { --accent-bar: #1fd0d6; }
+    .workflow-step--export { --accent-bar: #1fd0d6; }
+    .workflow-step--analyze { --accent-bar: #1fd0d6; }
     .workflow-step__label {
       font-size: 10px;
       font-weight: 800;
@@ -119,6 +123,7 @@
       font-weight: 700;
       color: #e8f0f8;
       margin-bottom: 6px;
+      line-height: 1.25;
     }
     .workflow-step__detail {
       font-size: 12px;
@@ -251,58 +256,96 @@
       font-weight: 400;
       text-decoration: underline;
     }
+
+    .companion-section {
+      text-align: left;
+      margin-top: 28px;
+      margin-bottom: 32px;
+      scroll-margin-top: 24px;
+      background: rgba(13, 21, 32, 0.72);
+      border: 1px solid rgba(31, 208, 214, 0.22);
+      border-radius: 10px;
+      padding: 18px 18px 20px;
+    }
+    .companion-section .workflow-section__title {
+      margin-bottom: 10px;
+    }
+    .companion-detail {
+      font-size: 13px;
+      color: #aab4be;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .companion-detail strong {
+      color: #e8f0f8;
+      font-weight: 600;
+    }
+    .companion-note {
+      font-size: 12px;
+      color: #8a9bb0;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+    .companion-section .links {
+      justify-content: flex-start;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="icon">
-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="6" y="24" width="7" height="12" rx="1" fill="#7aeff2"/>
-        <rect x="18.5" y="14" width="7" height="22" rx="1" fill="#1fd0d6"/>
-        <rect x="31" y="8" width="7" height="28" rx="1" fill="#14b8c0"/>
+    <div class="icon" aria-hidden="true">
+      <svg width="80" height="80" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+        <rect width="128" height="128" rx="18" fill="#0d1520"/>
+        <rect x="24" y="64" width="18" height="40" fill="#ffffff"/>
+        <rect x="54" y="44" width="18" height="60" fill="#ffffff"/>
+        <rect x="84" y="22" width="18" height="82" fill="#ffffff"/>
+        <circle cx="98" cy="33" r="11" fill="#1fd0d6"/>
       </svg>
     </div>
 
     <p class="eyebrow">Live Amazon Rank Tracker</p>
-    <h1>Today's Amazon search. Every placement. One export.</h1>
+    <h1>Today's Amazon search. Every placement.</h1>
     <p class="subhead">
-      Check one or more ASINs the way a shopper searching those keywords would see them right now &mdash; organic, sponsored, and brand. Traditional Rank and Absolute on the same row. CSV or Excel files stay on your computer.
+      Check one or more ASINs the way a shopper searching those keywords would see them right now &mdash; not a trailing 30-day average. Every key placement is detected: organic, sponsored, collection, carousel, store, and video.
     </p>
 
     <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
       <p class="workflow-section__heading">How it works</p>
-      <h2 id="workflow-title" class="workflow-section__title">Check today's search. See every slot. Export the file.</h2>
+      <h2 id="workflow-title" class="workflow-section__title">Measure today. Export the file. Get the insights.</h2>
 
       <div class="workflow-strip">
-        <article class="workflow-step workflow-step--check">
-          <p class="workflow-step__label">Check</p>
-          <p class="workflow-step__feature">Today's search</p>
-          <p class="workflow-step__detail">Paste ASINs and keywords. Choose a marketplace. Click Check ranks. You do not need to keep an Amazon tab open, and you do not need Amazon API keys.</p>
-        </article>
-
-        <article class="workflow-step workflow-step--see">
-          <p class="workflow-step__label">See</p>
-          <p class="workflow-step__feature">Every placement</p>
-          <p class="workflow-step__detail">Organic, sponsored, collection, carousel, store, and video. Rank is place in the full results list. Absolute is place among organic results only &mdash; ads are not counted.</p>
+        <article class="workflow-step workflow-step--measure">
+          <p class="workflow-step__label">Measure</p>
+          <p class="workflow-step__feature">Today's search<br>Every placement</p>
+          <p class="workflow-step__detail">Live search for the marketplace and postcode you set. Every key placement type detected &mdash; not just organic &amp; sponsored product. Rank and Absolute on every organic row.</p>
         </article>
 
         <article class="workflow-step workflow-step--export">
           <p class="workflow-step__label">Export</p>
           <p class="workflow-step__feature">CSV or Excel</p>
-          <p class="workflow-step__detail">One row per ASIN, keyword, and placement. Save each day's file and watch ranks over time. The files stay on your computer.</p>
+          <p class="workflow-step__detail">Analysis-friendly: one row per placement type so daily files append, ingest, and pivot cleanly. Files stay on your computer.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--analyze">
+          <p class="workflow-step__label">Analyze</p>
+          <p class="workflow-step__feature">Trends or workbook</p>
+          <p class="workflow-step__detail"><strong>Pro:</strong> Trends tab &mdash; seamlessly visualize and filter all rank placement types over time, spot insights, and export any table view to act on it. <strong>Free:</strong> <a href="#companion" style="color:#7aeff2;text-decoration:underline;">free Excel workbook</a> plots rank over time from your CSV folder.</p>
         </article>
       </div>
     </section>
 
     <p class="session-note" id="session">
-      A Check uses this browser's Amazon shopping session on desktop search &mdash; the same kind of page every Chrome rank tool can see, not the Amazon shopping app. Sign out for a typical shopper view. Stay signed in if you want ads that follow your shopping account, including some Sponsored Products videos.
+      The extension uses this browser's desktop Amazon shopping posture. Sign out for a typical shopper view. Stay signed in if you want ads that follow your shopping account, like some Sponsored Products videos.
     </p>
 
     <ul class="essentials">
-      <li><span>On-demand &mdash; not a trailing 7-day average, not Best Sellers Rank, and not a 24/7 feed</span></li>
-      <li><span>Runs in your browser &mdash; files stay on your computer, nothing sent to us</span></li>
+      <li><span>Today's data &mdash; not a trailing 30-day average</span></li>
+      <li><span>Runs in your browser &mdash; files stay on your computer, nothing sent anywhere</span></li>
+      <li><span>Absolute rank included &mdash; steadier organic measure that cuts through ad-density noise</span></li>
       <li><span>13 Amazon retail marketplaces &mdash; US, UK, CA, EU, JP, IN, MX, AU, NL, BR</span></li>
-      <li><span>A free Excel workbook to see ranks over time &mdash; coming when the extension is on the Chrome Web Store</span></li>
+      <li><span>Pro Trends &mdash; load your CSV folder to see trends, filter for insights, and export any view</span></li>
+      <li><span>Free Excel companion &mdash; download below; rank over time from your CSV folder</span></li>
     </ul>
 
     <p class="tiers-heading">Free vs Pro</p>
@@ -310,20 +353,32 @@
       <div class="tier">
         <div class="tier-name">Free</div>
         <div class="tier-price">$0</div>
-        <div class="tier-desc">200 keywords per run. Organic ranks and keyword index. CSV and Excel. All 13 marketplaces. Default 3 pages per keyword (you can set 1&ndash;7).</div>
+        <div class="tier-desc">200 keywords per run. Organic rank and Absolute rank. CSV and Excel. All 13 marketplaces. Default search depth 3 pages per keyword (you can set 1&ndash;7).</div>
       </div>
       <div class="tier pro">
         <div class="tier-name">Pro</div>
         <div class="tier-price">$28<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
-        <div class="tier-desc">Sponsored and brand placements, zip or postcode checks, unlimited keywords. Subscribe and cancel anytime from the extension.</div>
+        <div class="tier-desc">All Sponsored and Brand placement types, zip or postcode checks, unlimited keywords, and folder Trends (visualize, filter, export any table view). Subscribe and cancel anytime from the extension.</div>
       </div>
     </div>
 
-    <p class="coming">The Chrome Web Store listing is coming soon. This is the official website.</p>
+    <p class="coming">The Chrome Web Store listing is coming soon. This is our official extension homepage.</p>
 
     <div class="links">
       <a class="btn primary" href="mailto:support@miltonstyles.com?subject=Live%20Amazon%20Rank%20Tracker">Email support@miltonstyles.com</a>
     </div>
+
+    <section id="companion" class="companion-section" aria-labelledby="companion-title">
+      <p class="workflow-section__heading">Beyond the extension</p>
+      <h2 id="companion-title" class="workflow-section__title">Free Excel companion workbook</h2>
+      <p class="companion-detail">
+        Save each Check as CSV in one folder. This free workbook reads every <code>rank_export_*.csv</code> file and cleanly maps rank over time to help you spot insights. No account, no email wall. Pro users usually prefer the more powerful Trends feature inside the extension; this is the free path when you want charts without Pro. Enjoy!
+      </p>
+      <div class="links">
+        <a class="btn primary" href="companion/live-amazon-rank-tracker-companion.xlsx">Download workbook (v1.2.15)</a>
+      </div>
+      <p class="companion-note">This is an optional free extra. Paste your export CSV folder on the Start sheet, then Refresh All. Very large data folders may limit load size.</p>
+    </section>
 
     <footer>
       &copy; 2026 Milton Styles LLC &nbsp;&middot;&nbsp;
@@ -333,7 +388,7 @@
       <a href="mailto:support@miltonstyles.com?subject=PPC%20Optimization%20Workflow">Drop us a note</a> if that sounds useful.
       <br><br>
       Live Amazon Rank Tracker is an independent product and is not affiliated
-      with or endorsed by Amazon.com, Inc.
+      with or endorsed by Amazon.com, Inc. or its affiliates.
     </footer>
   </div>
 </body>
