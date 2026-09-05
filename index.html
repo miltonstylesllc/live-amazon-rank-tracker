@@ -102,11 +102,7 @@
       height: 3px;
       background: var(--accent-bar, #1fd0d6);
     }
-    /* Pillar cap colors: teal family for now (product accent). History used
-       orange / cyan / gold because those came from the YouTube Remotion schematic.
-       When Rank Tracker gets a promo video, A/B same-cap vs distinct caps there
-       first; if distinct wins, bring those tokens back here. Do not invent a
-       second accent just for this strip. */
+    /* Pillar cap colors: teal family for now (product accent). */
     .workflow-step--measure { --accent-bar: #1fd0d6; }
     .workflow-step--export { --accent-bar: #1fd0d6; }
     .workflow-step--analyze { --accent-bar: #1fd0d6; }
@@ -129,6 +125,45 @@
       font-size: 12px;
       color: #8a9bb0;
       line-height: 1.45;
+    }
+
+    .video-section {
+      margin-bottom: 28px;
+      scroll-margin-top: 24px;
+      text-align: left;
+    }
+    .video-section__heading {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .video-section__sub {
+      font-size: 14px;
+      color: #8a9bb0;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #0d1520;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(31, 208, 214, 0.15);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     .session-note {
@@ -309,6 +344,16 @@
     <p class="subhead">
       Check one or more ASINs the way a shopper searching those keywords would see them right now &mdash; not a trailing 30-day average. Every key placement is detected: organic, sponsored, collection, carousel, store, and video.
     </p>
+
+    <section id="video" class="video-section" aria-labelledby="video-heading">
+      <h2 id="video-heading" class="video-section__heading">Watch the overview</h2>
+      <p class="video-section__sub">
+        60-second walkthrough: today&rsquo;s live search, every placement type, Absolute rank, Free vs Pro, and Trends.
+      </p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/pzJUHCtN5eI" title="Live Amazon Rank Tracker — 60 Second Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
 
     <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
       <p class="workflow-section__heading">How it works</p>
