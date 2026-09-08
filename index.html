@@ -255,6 +255,19 @@
       flex-wrap: wrap;
       margin-bottom: 8px;
     }
+    .cta-block {
+      margin-top: 4px;
+      margin-bottom: 0;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 28px 0 32px;
+    }
+    .page-actions {
+      margin-top: 28px;
+      margin-bottom: 4px;
+    }
     a.btn {
       display: inline-block;
       padding: 12px 24px;
@@ -295,8 +308,8 @@
 
     .companion-section {
       text-align: left;
-      margin-top: 28px;
-      margin-bottom: 32px;
+      margin-top: 0;
+      margin-bottom: 0;
       scroll-margin-top: 24px;
       background: rgba(13, 21, 32, 0.72);
       border: 1px solid rgba(31, 208, 214, 0.22);
@@ -408,29 +421,31 @@
       </div>
     </div>
 
-    <div class="links">
+    <div class="links cta-block">
       <a class="btn primary" href="https://chromewebstore.google.com/detail/live-amazon-rank-tracker/bepdjdhbmemmjdbhmhgpjnbnnjcplfee" target="_blank" rel="noopener">Get on Chrome Web Store</a>
     </div>
-    <div class="links">
-      <a class="btn secondary" href="/live-amazon-rank-tracker/privacy">Privacy Policy</a>
-      <a class="btn secondary" href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
-    </div>
+
+    <hr class="section-divider" aria-hidden="true">
 
     <section id="companion" class="companion-section" aria-labelledby="companion-title">
       <p class="workflow-section__heading">Beyond the extension</p>
       <h2 id="companion-title" class="workflow-section__title">Free Excel companion workbook</h2>
       <p class="companion-detail">
-        Save each Check as CSV in one folder. This free workbook reads every <code>rank_export_*.csv</code> file and cleanly maps rank over time to help you spot insights. No account, no email wall. Pro users usually prefer the more powerful Trends feature inside the extension; this is the free path when you want charts without Pro. Enjoy!
+        Optional free extra &mdash; not part of the Chrome extension. Save each Check as CSV in one folder; this workbook reads every <code>rank_export_*.csv</code> file and maps rank over time. No account, no email wall. Pro users usually prefer Trends inside the extension; this is the free path when you want charts without Pro.
       </p>
       <div class="links">
-        <a class="btn primary" href="companion/live-amazon-rank-tracker-companion.xlsx">Download workbook (v1.2.15)</a>
+        <a class="btn secondary" href="companion/live-amazon-rank-tracker-companion.xlsx">Download workbook (v1.2.15)</a>
       </div>
-      <p class="companion-note">This is an optional free extra. Paste your export CSV folder on the Start sheet, then Refresh All. Very large data folders may limit load size.</p>
+      <p class="companion-note">Paste your export CSV folder on the Start sheet, then Refresh All. Very large data folders may limit load size.</p>
     </section>
 
+    <div class="links page-actions">
+      <a class="btn secondary" href="/live-amazon-rank-tracker/privacy">Privacy Policy</a>
+      <a class="btn secondary" href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+    </div>
+
     <footer>
-      &copy; 2026 Milton Styles LLC &nbsp;&middot;&nbsp;
-      <a href="/live-amazon-rank-tracker/privacy">Privacy Policy</a>
+      &copy; 2026 Milton Styles LLC
       <br><br>
       Looking for tools beyond rank checks? We&rsquo;re building more for sellers and PPC managers.
       <a href="mailto:support@miltonstyles.com?subject=PPC%20Optimization%20Workflow">Drop us a note</a> if that sounds useful.
