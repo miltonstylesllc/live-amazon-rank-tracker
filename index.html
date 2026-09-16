@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Amazon Rank Tracker — Today's Search, Every Placement</title>
-  <meta name="description" content="Check today's Amazon search for one or more ASINs. Every key placement detected: organic, sponsored, collection, carousel, store, and video. Analysis-friendly CSV or Excel. Rank and Absolute. Pro Trends to visualize, filter, and export. Free Excel workbook for rank over time.">
+  <title>Live Amazon Rank Tracker — Today's Search, Key Placements</title>
+  <meta name="description" content="Check today's Amazon search for one or more ASINs. Organic plus key sponsored and brand placement types. CSV or Excel export. Pro: scheduled rank checks, postcode-aware Deliver-to, unlimited keywords, and Trends over your export folder. Free Excel workbook for rank over time.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -83,7 +83,10 @@
       gap: 10px;
     }
     @media (min-width: 560px) {
-      .workflow-strip { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .workflow-strip { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    }
+    @media (min-width: 720px) {
+      .workflow-strip { grid-template-columns: repeat(4, 1fr); gap: 8px; }
     }
     .workflow-step {
       background: rgba(13, 21, 32, 0.72);
@@ -105,6 +108,7 @@
     /* Pillar cap colors: teal family for now (product accent). */
     .workflow-step--measure { --accent-bar: #1fd0d6; }
     .workflow-step--export { --accent-bar: #1fd0d6; }
+    .workflow-step--schedule { --accent-bar: #1fd0d6; }
     .workflow-step--analyze { --accent-bar: #1fd0d6; }
     .workflow-step__label {
       font-size: 10px;
@@ -354,30 +358,30 @@
     </div>
 
     <p class="eyebrow">Live Amazon Rank Tracker</p>
-    <h1>Today's Amazon search. Every placement.</h1>
+    <h1>Today's Amazon search. Every key placement.</h1>
     <p class="subhead">
-      Check one or more ASINs the way a shopper searching those keywords would see them right now &mdash; not a trailing 30-day average. Every key placement is detected: organic, sponsored, collection, carousel, store, and video.
+      Check one or more ASINs based on today&rsquo;s Amazon search in your browser session &mdash; not a trailing 30-day average. Every key placement is detected: organic, sponsored product, collection, carousel, store, and video.
     </p>
 
     <section id="video" class="video-section" aria-labelledby="video-heading">
       <h2 id="video-heading" class="video-section__heading">Watch the overview</h2>
       <p class="video-section__sub">
-        60-second walkthrough: today&rsquo;s live search, every placement type, Absolute rank, Free vs Pro, and Trends.
+        Just over a minute: live rank from today's search, every key placement type, <strong>Absolute rank</strong>, <strong>Pro Schedule</strong>, and <strong>Trends</strong>.
       </p>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/8rB3uXXu5eI" title="Live Amazon Rank Tracker — 60 Second Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/XDHxxLMWjsQ" title="Live Amazon Rank Tracker — 60 Second Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </section>
 
     <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
       <p class="workflow-section__heading">How it works</p>
-      <h2 id="workflow-title" class="workflow-section__title">Measure today. Export the file. Get the insights.</h2>
+      <h2 id="workflow-title" class="workflow-section__title">Measure today. Export on your schedule. Get the insights.</h2>
 
       <div class="workflow-strip">
         <article class="workflow-step workflow-step--measure">
           <p class="workflow-step__label">Measure</p>
-          <p class="workflow-step__feature">Today's search<br>Every placement</p>
-          <p class="workflow-step__detail">Live search for the marketplace and postcode you set. Every key placement type detected &mdash; not just organic &amp; sponsored product. Rank and Absolute on every organic row.</p>
+          <p class="workflow-step__feature">Today's search<br>Key placements</p>
+          <p class="workflow-step__detail">Today&rsquo;s search for the marketplace you set. Every key placement type is detected &mdash; not just organic and sponsored product. Rank and Absolute on every organic row. <strong>Pro</strong> adds postcode-aware Deliver-to checks.</p>
         </article>
 
         <article class="workflow-step workflow-step--export">
@@ -386,23 +390,30 @@
           <p class="workflow-step__detail">Analysis-friendly: one row per placement type so daily files append, ingest, and pivot cleanly. Files stay on your computer.</p>
         </article>
 
+        <article class="workflow-step workflow-step--schedule">
+          <p class="workflow-step__label">Schedule</p>
+          <p class="workflow-step__feature">Pro automation</p>
+          <p class="workflow-step__detail"><strong>Pro:</strong> Set jobs for the days and times you want. Each run exports the same CSV as Check ranks to a folder you pick or to Downloads. For jobs to run, keep your computer on and Chrome running. Chrome can be minimized, the extension tab can be closed, and your PC can be locked.</p>
+        </article>
+
         <article class="workflow-step workflow-step--analyze">
           <p class="workflow-step__label">Analyze</p>
           <p class="workflow-step__feature">Trends or workbook</p>
-          <p class="workflow-step__detail"><strong>Pro:</strong> Trends tab &mdash; seamlessly visualize and filter all rank placement types over time, spot insights, and export any table view to act on it. <strong>Free:</strong> <a href="#companion" style="color:#7aeff2;text-decoration:underline;">free Excel workbook</a> plots rank over time from your CSV folder.</p>
+          <p class="workflow-step__detail"><strong>Pro:</strong> Trends tab &mdash; load your CSV folder, visualize and filter placements over time, and export any table view. <strong>Free:</strong> <a href="#companion" style="color:#7aeff2;text-decoration:underline;">Excel workbook</a> plots rank over time from your CSV folder.</p>
         </article>
       </div>
     </section>
 
     <p class="session-note" id="session">
-      The extension uses this browser's desktop Amazon shopping posture. Sign out for a typical shopper view. Stay signed in if you want ads that follow your shopping account, like some Sponsored Products videos.
+      The extension uses your browser&rsquo;s current Amazon shopping posture. Sign out for a more typical shopper view. Stay signed in if you want ads tied to your shopping account, including some video placements. For <strong>Pro Schedule</strong>, keep your computer on and Google Chrome running in the background. You can minimize Chrome, use other tabs, close the extension tab, or lock your PC; quitting Chrome or putting the computer to sleep pauses scheduled runs.
     </p>
 
     <ul class="essentials">
       <li><span>Today's data &mdash; not a trailing 30-day average</span></li>
-      <li><span>Runs in your browser &mdash; files stay on your computer, nothing sent anywhere</span></li>
+      <li><span>Runs in your browser &mdash; files stay on your computer, and nothing is sent to us</span></li>
       <li><span>Absolute rank included &mdash; steadier organic measure that cuts through ad-density noise</span></li>
       <li><span>13 Amazon retail marketplaces &mdash; US, CA, UK, DE, FR, IT, ES, JP, IN, MX, AU, NL, BR</span></li>
+      <li><span>Pro Schedule &mdash; automate rank checks and stack CSV exports into folders Trends reads</span></li>
       <li><span>Pro Trends &mdash; load your CSV folder to see trends, filter for insights, and export any view</span></li>
       <li><span>Free Excel companion &mdash; download below; rank over time from your CSV folder</span></li>
     </ul>
@@ -417,7 +428,7 @@
       <div class="tier pro">
         <div class="tier-name">Pro</div>
         <div class="tier-price">$28<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
-        <div class="tier-desc">All Sponsored and Brand placement types, zip or postcode checks, unlimited keywords, and folder Trends (visualize, filter, export any table view). Subscribe and cancel anytime from the extension.</div>
+        <div class="tier-desc">All key Sponsored and Brand placement types, zip or postcode checks, unlimited keywords, <strong>Schedule</strong> (multi-job CSV exports to folders you pick or Downloads), and folder <strong>Trends</strong>. Subscribe and cancel anytime from the extension.</div>
       </div>
     </div>
 
@@ -431,7 +442,7 @@
       <p class="workflow-section__heading">Beyond the extension</p>
       <h2 id="companion-title" class="workflow-section__title">Free Excel companion workbook</h2>
       <p class="companion-detail">
-        Optional free extra &mdash; not part of the Chrome extension. Save each Check as CSV in one folder; this workbook reads every <code>rank_export_*.csv</code> file and maps rank over time. No account, no email wall. Pro users usually prefer Trends inside the extension; this is the free path when you want charts without Pro.
+        Optional free extra &mdash; not part of the Chrome extension. Save each Check as CSV in one folder; this workbook reads every <code>rank_export_*.csv</code> file and maps rank over time. No account, no email wall. Pro users usually prefer the more capable Trends inside the extension; this is the free path when you want some charts without Pro.
       </p>
       <div class="links">
         <a class="btn secondary" href="companion/live-amazon-rank-tracker-companion.xlsx">Download workbook (v1.2.15)</a>
