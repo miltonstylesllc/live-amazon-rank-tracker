@@ -272,6 +272,68 @@
       margin-top: 28px;
       margin-bottom: 4px;
     }
+    .related-tool {
+      text-align: left;
+      background: rgba(13, 21, 32, 0.72);
+      border: 1px solid rgba(31, 208, 214, 0.22);
+      border-radius: 10px;
+      padding: 18px 18px 20px;
+      margin-top: 24px;
+      margin-bottom: 0;
+    }
+    .related-tool__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7aeff2;
+      margin-bottom: 6px;
+    }
+    .related-tool__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .related-tool__detail {
+      font-size: 13px;
+      color: #aab4be;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .related-tool__row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .related-tool__content {
+      flex: 1;
+      min-width: 0;
+    }
+    .related-tool__icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 18, 24, 0.9);
+      border: 1px solid rgba(31, 208, 214, 0.22);
+    }
+    .related-tool__icon svg {
+      display: block;
+    }
+    .related-tool .links {
+      justify-content: flex-start;
+      margin-bottom: 0;
+    }
+    @media (max-width: 520px) {
+      .related-tool__row {
+        flex-direction: column;
+      }
+    }
     a.btn {
       display: inline-block;
       padding: 12px 24px;
@@ -448,6 +510,33 @@
         <a class="btn secondary" href="companion/live-amazon-rank-tracker-companion.xlsx">Download workbook (v1.2.15)</a>
       </div>
       <p class="companion-note">Paste your export CSV folder on the Start sheet, then Refresh All. Very large data folders may limit load size.</p>
+    </section>
+
+    <section class="related-tool" aria-labelledby="related-history-title">
+      <div class="related-tool__row">
+        <div class="related-tool__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="36" height="26" rx="1" stroke="white" stroke-width="1.5" fill="none"/>
+            <line x1="16" y1="4" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+            <line x1="28" y1="4" x2="28" y2="30" stroke="white" stroke-width="1.5"/>
+            <line x1="4" y1="11" x2="40" y2="11" stroke="white" stroke-width="1.5"/>
+            <line x1="4" y1="18" x2="40" y2="18" stroke="white" stroke-width="1.5"/>
+            <line x1="4" y1="25" x2="40" y2="25" stroke="white" stroke-width="1.5"/>
+            <rect x="19" y="32" width="6" height="7" fill="#ff9900"/>
+            <polygon points="11,39 33,39 22,44" fill="#ff9900"/>
+          </svg>
+        </div>
+        <div class="related-tool__content">
+          <p class="related-tool__eyebrow">Also from Amazon Seller Dev</p>
+          <h2 id="related-history-title" class="related-tool__title">Need Amazon Ads change history in a CSV?</h2>
+          <p class="related-tool__detail">
+            Amazon Ads History Exporter pulls bid edits, pauses, negations, and budget changes out of Amazon Ads Change History into a clean CSV before Amazon&rsquo;s shrinking history window makes older changes inaccessible. There is no export button in Amazon Ads, so use this extension to backfill what you can still get today and maintain a record of what actually changed over time.
+          </p>
+          <div class="links">
+            <a class="btn secondary" href="https://miltonstylesllc.github.io/ads-history-exporter/" target="_blank" rel="noopener">View Amazon Ads History Exporter</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="links page-actions">
