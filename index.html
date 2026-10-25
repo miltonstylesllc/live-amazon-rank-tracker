@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Amazon Rank Tracker — Today's Search, Key Placements</title>
   <meta name="description" content="Check today's Amazon search for one or more ASINs. Organic plus key sponsored and brand placement types. CSV or Excel export. Pro: scheduled rank checks, postcode-aware Deliver-to, unlimited keywords, and Trends over your export folder. Free Excel workbook for rank over time.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Live Amazon Rank Tracker",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Chrome",
+    "description": "Chrome extension that checks Amazon keyword rank from today's search for one or more ASINs: organic rank, Absolute rank, and sponsored and brand placements, exported to CSV or Excel. Free: 200 keywords per run, organic and Absolute rank. Pro adds sponsored and brand placements, postcode checks, unlimited keywords, Schedule and Trends; 14-day Pro trial with no card.",
+    "url": "https://miltonstylesllc.github.io/live-amazon-rank-tracker/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/bepdjdhbmemmjdbhmhgpjnbnnjcplfee",
+    "dateModified": "2026-10-22",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Pro monthly", "price": "28", "priceCurrency": "USD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "28", "priceCurrency": "USD", "billingDuration": "P1M" } },
+      { "@type": "Offer", "name": "Pro yearly", "price": "249", "priceCurrency": "USD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "249", "priceCurrency": "USD", "billingDuration": "P1Y" } }
+    ],
+    "publisher": { "@type": "Organization", "name": "Milton Styles LLC" }
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -217,6 +238,12 @@
       color: #8a9bb0;
       margin-bottom: 12px;
     }
+    .tiers-trial {
+      font-size: 14px;
+      color: #aab4be;
+      margin: -4px 0 14px;
+    }
+
     .tiers {
       display: flex;
       gap: 12px;
@@ -405,6 +432,95 @@
       justify-content: flex-start;
       margin-bottom: 0;
     }
+
+    .faq {
+      text-align: left;
+      margin-top: 28px;
+      margin-bottom: 0;
+      scroll-margin-top: 24px;
+    }
+    .faq__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .faq__title--group {
+      margin-top: 28px;
+    }
+    .faq__updated {
+      font-size: 12px;
+      color: #8a9bb0;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    /* Native details/summary accordion: answers stay in the HTML for crawlers, any number can be open */
+    .faq__item {
+      background: rgba(13, 21, 32, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      margin-bottom: 8px;
+    }
+    .faq__item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 10px;
+    }
+    .faq__item summary::-webkit-details-marker { display: none; }
+    .faq__item summary::after {
+      content: "";
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin-left: auto;
+      border-right: 2px solid #1fd0d6;
+      border-bottom: 2px solid #1fd0d6;
+      transform: rotate(45deg) translate(-2px, -2px);
+      transition: transform 0.2s;
+    }
+    .faq__item[open] summary::after {
+      transform: rotate(-135deg) translate(-2px, -2px);
+    }
+    .faq__item summary:hover { background: rgba(31, 208, 214, 0.08); }
+    .faq__item summary:focus-visible {
+      outline: 2px solid #1fd0d6;
+      outline-offset: 2px;
+    }
+    .faq__item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+    .faq__answer {
+      padding: 0 18px 16px;
+    }
+    @media print {
+      .faq__item summary::after { display: none; }
+      .faq__item > .faq__answer { display: block !important; }
+    }
+    .faq__item p,
+    .faq__item li {
+      font-size: 14px;
+      color: #c8d3dc;
+      line-height: 1.6;
+    }
+    .faq__item p + p,
+    .faq__item p + ul,
+    .faq__item ul + p {
+      margin-top: 8px;
+    }
+    .faq__item ul {
+      padding-left: 20px;
+    }
+    .faq__item a {
+      color: #7aeff2;
+    }
   </style>
 </head>
 <body>
@@ -480,7 +596,8 @@
       <li><span>Free Excel companion &mdash; download below; rank over time from your CSV folder</span></li>
     </ul>
 
-    <p class="tiers-heading">Free vs Pro</p>
+    <p class="tiers-heading" id="pricing">Free vs Pro</p>
+    <p class="tiers-trial">Your <strong>14-day full Pro trial</strong> starts the first time you open the extension. No card, nothing to cancel. After 14 days you stay on Free unless you upgrade.</p>
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
@@ -489,7 +606,7 @@
       </div>
       <div class="tier pro">
         <div class="tier-name">Pro</div>
-        <div class="tier-price">$28<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
+        <div class="tier-price">$28<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span> <span style="font-size:13px;font-weight:400;color:#8a9bb0">or $249/yr</span></div>
         <div class="tier-desc">All key Sponsored and Brand placement types, zip or postcode checks, unlimited keywords, <strong>Schedule</strong> (multi-job CSV exports to folders you pick or Downloads), and folder <strong>Trends</strong>. Subscribe and cancel anytime from the extension.</div>
       </div>
     </div>
@@ -497,6 +614,137 @@
     <div class="links cta-block">
       <a class="btn primary" href="https://chromewebstore.google.com/detail/live-amazon-rank-tracker/bepdjdhbmemmjdbhmhgpjnbnnjcplfee" target="_blank" rel="noopener">Get on Chrome Web Store</a>
     </div>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="faq__title">Questions about checking Amazon keyword rank</h2>
+      <p class="faq__updated">Updated <time datetime="2026-10-22">October 22, 2026</time></p>
+
+      <details class="faq__item" id="faq-how">
+        <summary><h3>How do I check my Amazon keyword rank?</h3></summary>
+        <div class="faq__answer">
+          <p>Install Live Amazon Rank Tracker from the Chrome Web Store and open it. Paste one or more ASINs and the keywords you care about, choose the marketplace and a search depth (up to 3 Amazon pages per keyword by default, up to 7 if you set it; the check stops early when Amazon has fewer pages), and click Check ranks.</p>
+          <p>The extension checks today&rsquo;s Amazon search for each keyword in the background, using your browser&rsquo;s Amazon session; no Amazon pages open on your screen while it works. It then shows where each ASIN appears, and you can save the results as CSV or Excel.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-free">
+        <summary><h3>Is it free?</h3></summary>
+        <div class="faq__answer">
+          <p>Yes. The free version checks up to 200 keywords per run in all 13 marketplaces, with organic Rank, Absolute rank, and CSV or Excel export.</p>
+          <p>Every new user also gets a 14-day full Pro trial, which starts the first time you open the extension. No card is needed and there is nothing to cancel; after 14 days you stay on Free unless you upgrade. Pro ($28 a month or $249 a year) adds sponsored and brand placements, postcode checks, unlimited keywords, Schedule and Trends.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-absolute">
+        <summary><h3>What is Absolute rank, and how is it different from traditional Rank?</h3></summary>
+        <div class="faq__answer">
+          <p>Traditionally, Rank is the position in Amazon&rsquo;s results list, ads included. An ad block such as a collection, carousel or store counts as one position, and the order follows Amazon&rsquo;s results list, which can differ slightly from the grid on your screen. Absolute rank counts organic results only.</p>
+          <p>The number of ads above your listing is noisy. It changes with the Deliver-to location, the location the search is made from, whether the session is signed in, the keyword, and the time of day. So Rank can make large moves even when your organic position barely changed. Absolute rank usually stays within a few places when Rank jumps, which makes it the better number for tracking organic progress over time. Every organic row includes both.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-schedule">
+        <summary><h3>Can I track Amazon keyword rank automatically on a schedule?</h3></summary>
+        <div class="faq__answer">
+          <p>Yes, with the Pro <strong>Schedule</strong> tab in the extension. Create jobs with their own marketplace, ASINs and keywords, choose the days and times, and each run saves the same CSV as a manual check to a folder you pick or to Downloads.</p>
+          <p>Want several readings a day? Create a morning, a midday and an evening job with the same ASINs and keywords. The Pro <strong>Trends</strong> tab averages same-day runs into one value in its Daily view; its Hourly view keeps each run separate.</p>
+          <p>Keep your computer on and Google Chrome running; Chrome can be minimized, the extension tab can be closed, and your PC can be locked. Quitting Chrome or putting the computer to sleep pauses scheduled runs.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-trends">
+        <summary><h3>How do I see keyword rank trends over time?</h3></summary>
+        <div class="faq__answer">
+          <p>Save each check (or let Schedule save each run) as a CSV in one folder. The Pro <strong>Trends</strong> tab in the extension loads that folder and charts every placement type over time, with filters, sorts for the biggest movers, and export of any view. On Free, the <a href="#companion">Excel companion workbook</a> reads the same folder and plots rank over time.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-other-tracker">
+        <summary><h3>Why is my rank here different from my other rank tracker?</h3></summary>
+        <div class="faq__answer">
+          <p>Most often because the two tools measure different timeframes:</p>
+          <ul>
+            <li><strong>Live check</strong> (this extension): reads Amazon search at the moment you run the check, so the number is today&rsquo;s current position.</li>
+            <li><strong>Stored data</strong> (most subscription tools): saves a snapshot of the search once a day, or a few times a day, so the number can be hours old. Some of the big all-in-one suites instead show an average of several days. That hides the day-to-day changes you usually want to see, can lag a real change by days or weeks, and can keep showing a rank for weeks after a product has gone out of stock.</li>
+          </ul>
+          <p>Location and sign-in also change what Amazon shows, so two tools checking at the same minute can still differ (see <a href="#faq-team-phone">why results differ between people and devices</a>).</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-placements">
+        <summary><h3>Which ad placements does it detect?</h3></summary>
+        <div class="faq__answer">
+          <p>Organic results plus sponsored product, collection, carousel, store, and video placements (brand video and sponsored product video are recorded as separate rows). CSV and Excel exports have one row per placement type, so you can see where each of your ads appears next to your organic rank. Free shows organic Rank and Absolute rank; sponsored and brand placements are Pro (and included in the trial).</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-marketplaces">
+        <summary><h3>Which Amazon marketplaces are supported?</h3></summary>
+        <div class="faq__answer">
+          <p>13 Amazon retail marketplaces: United States, Canada, United Kingdom, Germany, France, Italy, Spain, Japan, India, Mexico, Australia, Netherlands, and Brazil. All 13 are available on Free and Pro.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-privacy">
+        <summary><h3>Does my rank data leave my computer?</h3></summary>
+        <div class="faq__answer">
+          <p>No. Checks run in your browser, and results and files stay on your computer; we do not receive them. There is no usage tracking. Pro payments are handled by ExtensionPay with Stripe. See the <a href="/live-amazon-rank-tracker/privacy">privacy policy</a> for details.</p>
+        </div>
+      </details>
+
+      <h2 id="faq-troubleshooting-title" class="faq__title faq__title--group">When the numbers look different</h2>
+      <p class="faq__updated">Amazon search changes with location, sign-in, device and time. These answers explain what you are seeing.</p>
+
+      <details class="faq__item" id="faq-jumps">
+        <summary><h3>Why does my Rank number jump around from day to day?</h3></summary>
+        <div class="faq__answer">
+          <p>Usually because the ads above your listing changed, not because your organic position moved much. In one of our tests (United States, two checks 15 minutes apart, about 25,000 organic results found in both), Absolute rank was within 3 places of the first check 96% of the time; Rank only 61% of the time. That is one marketplace and a short gap; over days your organic position moves too, and Absolute rank shows that movement without the ad noise.</p>
+          <p>Track Absolute rank for organic progress, and use Rank to see what a shopper sees on the page. See <a href="#faq-absolute">what Absolute rank is</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-variations">
+        <summary><h3>Why do my well-ranked ASINs appear and disappear from the results?</h3></summary>
+        <div class="faq__answer">
+          <p>Often because the ASIN belongs to a variation family. Amazon regularly swaps which child of a family it shows for a keyword: one search shows one size or color, the next search shows another. In 60 days of daily tracking of one brand&rsquo;s catalog on amazon.com (16 child ASINs in 6 families, about 28,000 cases of a child dropping out of the top 30 from one day to the next), a sibling from the same family was ranking for the same keyword the next day 89% of the time.</p>
+          <p>Track every child ASIN in the family, check how your own families behave, and look at the family&rsquo;s best position before reading a disappearance as a ranking loss.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-signed-in">
+        <summary><h3>What is the difference between a signed-in and a signed-out session?</h3></summary>
+        <div class="faq__answer">
+          <p>Even with no Amazon tab open, your browser may still be signed in to Amazon in the background. To check, open the Amazon site for your marketplace: &ldquo;Hello, sign in&rdquo; at the top means you are signed out; your name means you are signed in. Sign-in status can differ between Amazon marketplace sites: in our own browser we were signed in on amazon.com and amazon.ca but signed out on amazon.com.mx and the European sites, so check the site for the marketplace you track.</p>
+          <p>Signed in, Amazon tailors results to your personal shopping history. Signed out, results are less tied to one account and closer to what a typical shopper sees, though Deliver-to still changes them. Sign-in also strongly affects which ad placements Amazon shows and how many (some Sponsored Product video placements, for example, appear mainly when signed in), so it changes the sponsored results you measure.</p>
+          <p>We usually recommend checking signed out for organic comparisons, and signed in when you need to see ads tied to an account. Test both, then keep the same choice each time.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-team-phone">
+        <summary><h3>Why does my rank look different from what my team, my VA, or my phone shows?</h3></summary>
+        <div class="faq__answer">
+          <p>Amazon tailors search results to the Deliver-to location, the location the search is made from, and the signed-in account (or none). Delivering to New York or to Los Angeles, searching from Texas or from the Philippines, and searching signed in or signed out can each show very different organic and sponsored results for the same keyword at the same moment. In our own checks of one marketplace from different countries, Rank differed a lot while Absolute rank stayed stable.</p>
+          <p>A phone adds two more differences: the Amazon app is usually signed in, so results follow your personal shopping history, and phone pages can show a different number of results than a computer, which shifts positions.</p>
+          <p>For comparable numbers, agree on one setup: the same marketplace, the same <a href="#faq-signed-in">sign-in choice</a>, and with Pro the same zip or postcode.</p>
+          <p>If you do not type a postcode and your browser&rsquo;s Deliver-to is unset or in another country, the extension sets a standard city for that marketplace for the check. With Pro (and the trial), a typed zip or postcode is set for the check and confirmed on the search page before results are saved; the check stops with a clear message if Amazon rejects the postcode. Afterwards your previous location is restored when it was a local postcode. Amazon Netherlands sets delivery by country only.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-sponsored-missing">
+        <summary><h3>Why are some of my sponsored placements not detected, even though I run those ads?</h3></summary>
+        <div class="faq__answer">
+          <p>Amazon decides which ads appear on each search, and that changes with the Deliver-to location, the location the search is made from, and sign-in, including which types of placement appear at all. Sponsored Product video placements, for example, often do not appear in signed-out searches. Bids, budgets and ad schedules matter too: an ad that is out of budget or outbid at that moment is not on the page.</p>
+          <p>To compare, check again <a href="#faq-signed-in">signed in</a> or at a different time of day, and make sure you are on Pro or the trial: Free shows organic placements only.</p>
+        </div>
+      </details>
+
+      <details class="faq__item" id="faq-not-found">
+        <summary><h3>What happens if my ASIN is not on the pages checked?</h3></summary>
+        <div class="faq__answer">
+          <p>The keyword is still listed, and its rank result cell is left empty, so you can see that the ASIN was searched for and not found within the pages you chose. Raise the search depth (up to 7 pages) to look further down. For narrow keywords Amazon sometimes offers fewer pages than your setting; the extension checks as many as Amazon shows. On Free only organic results are recorded, so an ASIN that appears only as an ad also shows an empty rank.</p>
+        </div>
+      </details>
+    </section>
 
     <hr class="section-divider" aria-hidden="true">
 
@@ -553,6 +801,35 @@
       Live Amazon Rank Tracker is an independent product and is not affiliated
       with or endorsed by Amazon.com, Inc. or its affiliates.
     </footer>
+    <script>
+      // Links to #faq-* open the target question before scrolling to it.
+      (function () {
+        function faqItem(hash) {
+          var el = hash && hash.indexOf("#faq-") === 0 ? document.getElementById(hash.slice(1)) : null;
+          return el && el.tagName === "DETAILS" ? el : null;
+        }
+        function openFaq(el) {
+          el.open = true;
+          el.scrollIntoView();
+          el.querySelector("summary").focus({ preventScroll: true });
+        }
+        document.addEventListener("click", function (e) {
+          if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+          var a = e.target.closest && e.target.closest('a[href^="#faq-"]');
+          var el = a && faqItem(a.getAttribute("href"));
+          if (!el) return;
+          e.preventDefault();
+          history.replaceState(null, "", a.getAttribute("href"));
+          openFaq(el);
+        });
+        window.addEventListener("hashchange", function () {
+          var el = faqItem(location.hash);
+          if (el) openFaq(el);
+        });
+        var first = faqItem(location.hash);
+        if (first) openFaq(first);
+      })();
+    </script>
   </div>
 </body>
 </html>
