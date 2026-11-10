@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to Track Where Your Sponsored Ads Rank in Amazon Search</title>
-  <meta name="description" content="Amazon's ad console reports placement groups and impression share, not the slot your ad took on a search. How to see your actual sponsored position, by hand or with a tool, and how to read it.">
+  <meta name="description" content="Amazon's ad console reports placement groups and impression share, not the slot an ad took on a search. How to see where your ads and your competitors' ads actually show, tell the ad types apart (including the two kinds of video ad), and use it for bids and research.">
   <link rel="canonical" href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/guides/sponsored-ad-rank/">
   <script type="application/ld+json">
   {
@@ -62,9 +62,24 @@
 
   <div class="answer">
     <strong class="label">Short answer</strong>
-    <p>Amazon's ad console does not tell you which slot your ad took on a particular search. It reports performance by placement group (top of search, rest of search, product pages), the share of top-of-search impressions you won, and your impression share and impression rank among advertisers for a search term.</p>
-    <p>To see where your ad actually appears, you have to look at the search results page itself: by hand, or with a tool that reads the page and records each placement. Fix the delivery location and sign-in state, and check more than once a day, because the ads on a page change with both and with the time of day.</p>
+    <p>Amazon's ad console does not tell you which slot your ad took on a particular search. It reports placement groups (top of search, rest of search, product pages), the share of eligible top-of-search impressions your campaign received, and, for a search term, your impression share and impression rank within that ad type. Those numbers compare you with other advertisers in aggregate; they do not name competitors or show their ads.</p>
+    <p>To see where ads actually appear, yours and your competitors', look at the search results page itself, by hand or with a tool that records each placement and its type, and check the same way every time. Amazon changes the ads it shows with the delivery location, where the search is made from, whether you are signed in, and the time of day; how often to check is covered below.</p>
   </div>
+
+  <h2>Why does it matter where sponsored ads show?</h2>
+  <p>For the search terms you care about, the console tells you what you spent and what you got, but not what a shopper saw. Seeing the page, for your own listings and for competitors', helps in three ways:</p>
+  <ul>
+    <li><strong>Tuning bids.</strong> Where your ad lands, next to where your organic listing sits, shows whether a bid or placement adjustment changed what shoppers see.</li>
+    <li><strong>Reading competitors.</strong> Which brands advertise on a term, with which ad types, how high, and at what time of day, is public. It shows where they chose to advertise (it does not show their bids).</li>
+    <li><strong>Research before a launch.</strong> Before you sell in a niche, the same view shows how crowded its key terms are with ads and which ad types the leading brands use.</li>
+  </ul>
+  <p>Some goals sellers pursue with this view (examples, not recommendations; the right choice depends on margins and goals):</p>
+  <ul>
+    <li>Already ranking near the top organically? Some sellers keep their top-of-search adjustment low and check whether a sponsored tile still shows farther down the page, for a second spot without paying for the top one.</li>
+    <li>Ranking low organically? Some raise the bid or the top-of-search adjustment to compete for the top of the page, to be seen at all on that term.</li>
+    <li>Testing ad types: a Sponsored Products video may draw a different response from a Sponsored Brands video on the same term. Knowing which one appeared, where, for you and for competitors, is what makes that comparison possible.</li>
+  </ul>
+  <p>Amazon does not sell a particular row, such as "just below my organic listing". Bids and adjustments change your chances in a placement group; the live page shows where the ad actually landed.</p>
 
   <h2>What does Amazon's ad console tell you about ad position?</h2>
   <p>Three reports come close to "where does my ad show", and each answers a different question:</p>
@@ -72,42 +87,66 @@
   <table>
     <thead><tr><th>Report or metric</th><th>What it tells you</th><th>What it does not</th></tr></thead>
     <tbody>
-      <tr><td>Placement report (Sponsored Products and Sponsored Brands)</td><td>Impressions, clicks, spend and sales split by placement group. For Sponsored Products: top of search (first page), rest of search, product pages</td><td>Which slot within the group your ad took</td></tr>
-      <tr><td>Top-of-search impression share (Sponsored Products and Sponsored Brands)</td><td>Of the top-of-search impressions your campaign was eligible for, the share it actually received</td><td>Where you showed when you were not at the top, or on which searches</td></tr>
-      <tr><td>Search term impression share report (Sponsored Products and Sponsored Brands)</td><td>Your share of a search term's ad impressions, and your impression rank: how you place among all advertisers by impressions on that term</td><td>Your position on the page. An impression rank of 1 means you won the most impressions, not that you held slot 1</td></tr>
+      <tr><td>Placement report (Sponsored Products and Sponsored Brands)</td><td>Impressions, clicks, spend and sales split by placement group. For Sponsored Products: Top of search (first page), Rest of search, Product pages</td><td>Which slot within the group your ad took</td></tr>
+      <tr><td>Top-of-search impression share (Sponsored Products and Sponsored Brands)</td><td>Of the top-of-search impressions your campaign was eligible for, the share it actually received</td><td>Where you showed when you were not in that group, or on which searches</td></tr>
+      <tr><td>Search term impression share report (Sponsored Products and Sponsored Brands)</td><td>Account-wide, for the dates you choose: your share of that ad type's impressions on a search term (Sponsored Products share counts Sponsored Products impressions; Sponsored Brands share counts Sponsored Brands impressions), and your rank by those impressions</td><td>Your position on the page. An impression rank of 1 means you won the most impressions, not that you held slot 1</td></tr>
     </tbody>
   </table>
   </div>
-  <p>Top of search is the sponsored placement at the top of the first page of results; rest of search is every other search placement; product pages are placements on product detail pages and other pages outside the search results, so they are not a search position at all. Amazon Business placements are reported separately. Amazon's launch notes define <a href="https://advertising.amazon.com/resources/whats-new/top-of-search-impression-share-metric">top-of-search impression share</a> and the <a href="https://advertising.amazon.com/resources/whats-new/search-term-impression-report-sponsored-products">search term impression share report</a>.</p>
-  <p>In late 2026 Amazon is moving its sponsored ads reports into the unified Reporting page of the ad console, where Placement, Search term impression share and Top-of-search impression share are each a report template. Some metric and column names change in the move.</p>
-  <p>These are summaries over many searches. None of them can tell you that your ad was the fourth result on page 1 for "garlic press", delivering to Los Angeles, at 9 a.m. That is the question most sellers are asking when they say "ad rank".</p>
+  <p>For Sponsored Products the console names the groups "Top of search (first page)", "Rest of search" and "Product pages"; it does not list which rows fall in each group. Product-page placements are not in the search results at all. Amazon Business placements are reported separately. Amazon's launch notes define <a href="https://advertising.amazon.com/resources/whats-new/top-of-search-impression-share-metric">top-of-search impression share</a> and the <a href="https://advertising.amazon.com/resources/whats-new/search-term-impression-report-sponsored-products">search term impression share report</a>. All three are templates on the unified Reporting page of the ad console, which replaces the older sponsored ads reports page at the end of 2026.</p>
+  <p>These are summaries over many searches, of your own ads. None of them can tell you that your ad was the fourth result on page 1 for "garlic press", delivering to Los Angeles, checked at 9 a.m., or that a competitor's video sat just above it. That is the question most sellers are asking when they say "ad rank".</p>
+
+  <h2>Which sponsored placements can you bid on?</h2>
+  <p>Not every sponsored spot on a search page is something you buy directly. Telling them apart shows which ones your bids move.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Placement you see</th><th>What it is in the ad console</th><th>Your bids</th></tr></thead>
+    <tbody>
+      <tr><td>Single sponsored product tile</td><td>Sponsored Products ad</td><td>Direct: keyword, product or automatic-targeting bid, plus placement adjustments</td></tr>
+      <tr><td>Sponsored product tile with a video playing in it</td><td>Sponsored Products video: a video added to a Sponsored Products ad group</td><td>Direct: the same bids, plus an optional video bid adjustment applied on top of the placement adjustments</td></tr>
+      <tr><td>Brand banner with a logo and several products (often at the top)</td><td>Sponsored Brands product collection</td><td>Direct: the bids in that Sponsored Brands campaign</td></tr>
+      <tr><td>Brand video, usually one product with the brand name</td><td>Sponsored Brands video</td><td>Direct: the bids in that Sponsored Brands campaign</td></tr>
+      <tr><td>Row of several brands' stores</td><td>Each brand's part is a Sponsored Brands Store Spotlight ad</td><td>Direct for your own store ad; Amazon decides whether the row includes you</td></tr>
+      <tr><td>Themed row of sponsored products ("Highly rated", "Customers frequently viewed" and similar)</td><td>No separate ad type: Amazon groups sponsored products into these rows</td><td>Indirect: there is no carousel bid; your Sponsored Products ads may or may not be picked for one</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Direct placements are where a bid change can be tested and its effect measured. Themed rows are still worth tracking: they show whether Amazon is choosing to show your product, or a competitor's, in that extra spot.</p>
+
+  <h3>Two kinds of video ad</h3>
+  <p>A video on the search page can be either of two different ads, bought in different campaign types:</p>
+  <ul>
+    <li><strong>Sponsored Brands video</strong> is the long-standing brand video format, bought in a Sponsored Brands campaign.</li>
+    <li><strong>Sponsored Products video</strong> is a newer Sponsored Products format. You add product feature videos to a Sponsored Products ad group, or opt in and let Amazon assemble one from your existing product videos, so the regular product tile plays a video. Same targeting, budget and cost-per-click bid, plus the optional video bid adjustment. Amazon's help article "Understand Sponsored Products video" (October 20, 2026) lists it as available in the US only, and not for books; the <a href="https://advertising.amazon.com/library/guides/sponsored-products-video">Sponsored Products video guide</a> covers setup.</li>
+  </ul>
+  <p>Many reports and tools record both simply as "video". Because they are bought and bid differently, it pays to note which one appeared, for your ads and for competitors'. In our own checks, Sponsored Products video showed up more often in signed-in searches.</p>
 
   <h2>Why is a sponsored position a moving target?</h2>
-  <p>Ads are chosen for each search, so there is no single fixed ad rank for a keyword. What a shopper sees changes with:</p>
+  <p>Amazon picks the ads for each search as it happens, so there is no single fixed ad rank for a keyword. What a shopper sees changes with:</p>
   <ul>
     <li><strong>Delivery location.</strong> The Deliver-to address (zip or postcode) changes both the organic results and the ads.</li>
-    <li><strong>Where the search comes from.</strong> Searching the same marketplace from another state or country can show different results.</li>
-    <li><strong>Sign-in.</strong> Signed-in searches follow the account's shopping history, and some ad types (some Sponsored Product video placements, for example) appear mainly in signed-in searches.</li>
-    <li><strong>Time of day.</strong> Budgets run out, ad schedules switch campaigns on and off, and competitors' bids change during the day.</li>
+    <li><strong>Where the search is made from.</strong> Searching the same marketplace from another state or country can show different results. This is why your numbers and your VA's can differ, even with the same Deliver-to address.</li>
+    <li><strong>Signed in or signed out.</strong> Signed-in searches follow that shopping account's history, and in our checks some ad types (Sponsored Products video among them) showed up more when signed in.</li>
+    <li><strong>Time of day.</strong> Budgets run out, ad schedules switch campaigns on and off, and advertisers' bids change during the day.</li>
     <li><strong>Device.</strong> The app and the mobile site lay out results differently from a computer.</li>
   </ul>
-  <p>So a single check is a snapshot. A useful sponsored rank is a series of checks made the same way.</p>
+  <p>So a single check is a snapshot. A useful sponsored rank is a series of checks made the same way, to tell signal from noise: repeated checks show how much a position normally moves on that term, so you can recognise a real change when it comes. Averaging checks taken close together, such as several in one day, steadies the number. Averaging over many days goes too far the other way: it hides real changes for days and can keep showing a rank long after a product has gone out of stock.</p>
 
-  <h2>How do I check my sponsored ad position by hand?</h2>
+  <h2>How do I check sponsored positions by hand?</h2>
   <ol>
-    <li><strong>Choose a sign-in state.</strong> Use a private window (signed out) for a view that is not tied to one account's shopping history, or stay signed in when you need to see ads tied to an account. Keep the same choice every time.</li>
-    <li><strong>Set Deliver-to</strong> to a postcode in the region you care about, and keep it the same between checks.</li>
-    <li><strong>Search the keyword</strong> on the marketplace site you advertise in.</li>
-    <li><strong>Count the slots from the top</strong>, ads included: the brand banner or collection at the top, sponsored product tiles mixed into the grid, video placements, and carousels further down. Note the page number too.</li>
-    <li><strong>Write down</strong> the keyword, time, page, position and placement type, then repeat at other times of day.</li>
+    <li><strong>Decide whether to search signed in or signed out.</strong> Use a private window (signed out) for a view that is not tied to one shopping account's history, or stay signed in when you need to see the ads tied to that shopping account. Keep the same choice every time.</li>
+    <li><strong>Set Deliver-to</strong> to a postcode in the region you care about, and keep it the same between checks. Search from the same location each time, too.</li>
+    <li><strong>Search the keyword</strong> on the marketplace site you sell or research in.</li>
+    <li><strong>Count the slots from the top</strong>, ads included: the brand banner at the top, sponsored product tiles mixed into the grid, video placements (note whether each is a Sponsored Brands video or a Sponsored Products video), store rows and themed carousels further down. Note the page number too.</li>
+    <li><strong>Write down</strong> the keyword, time, page, position, placement type and brand, for your own listings and for the competitors you follow, then repeat at other times of day.</li>
   </ol>
   <div class="note">
-    <p><strong>Do not click your own ads while checking.</strong> Every click costs you money, and clicks and views can feed into what Amazon shows you next time.</p>
+    <p><strong>Don't click your own ads, or competitors' ads, while checking.</strong> On a cost-per-click ad a click is spend, and clicks can affect what that signed-in account sees next.</p>
   </div>
   <p>Checking by hand works for a handful of keywords. It gets slow beyond that, and your own searching history starts to colour the results when you are signed in.</p>
 
   <h2>How should I count positions?</h2>
-  <p>Pick one counting rule and stick to it. A common rule is to count every slot in order, ads included, and record the placement type next to the position. A brand banner or a carousel counts as one slot, however many products it holds. For organic results it also helps to keep a second count that skips the ads, because the number of ads above your listing changes from search to search.</p>
+  <p>Pick one counting rule and stick to it. A common rule is to count every slot in order, ads included, and record the placement type next to the position. A brand banner or a carousel counts as one slot, however many products it holds. For organic results it also helps to keep a second count that skips the ads, because the number of ads above a listing changes from search to search.</p>
   <p>Example from the top of one results page:</p>
   <div class="table-wrap">
   <table>
@@ -124,34 +163,40 @@
   <p>Amazon's page code lists results in an order that can differ slightly from the grid on your screen, so tools that read the page may number a few slots differently from your eye. That is fine as long as the same tool is used every time.</p>
 
   <h2>How do I track sponsored rank for many keywords?</h2>
-  <p>Use a tool that loads the search pages and records every placement it finds. Whatever you choose, check that it:</p>
+  <p>Use a tool that loads the search pages and records every placement it finds, for any ASIN you list, yours or a competitor's. Whatever you choose, check that it:</p>
   <ul>
-    <li>records each placement type separately (sponsored product, brand banner or collection, video, carousel, store), not only "sponsored";</li>
-    <li>lets you set the delivery location, so checks are comparable;</li>
-    <li>uses a sign-in state you can see and keep fixed;</li>
+    <li>records each placement type separately (sponsored product, Sponsored Products video, brand collection, Sponsored Brands video, store, themed carousel), not only "sponsored";</li>
+    <li>lets you set and keep consistent the Deliver-to location, so checks are comparable;</li>
+    <li>searches signed in or signed out as you choose, and keeps that the same;</li>
     <li>can run at the times you choose, several times a day (and check where those runs happen: on a server, or on your computer);</li>
-    <li>exports the raw results, so you can line them up with your ad reports.</li>
+    <li>exports the results in an analysis-friendly format, so you can line them up with your ad reports;</li>
+    <li>shows trends over time, so changes stand out without building charts yourself.</li>
   </ul>
   <p>Some tools read the page at the moment you check; others store a snapshot taken earlier, or show an average over several days. For ads, which change during the day, a fresh check or a set of scheduled checks is the more useful kind.</p>
-  <p>Our own Chrome extension, Live Amazon Rank Tracker, is one option of the first kind. It checks today's search in your browser. The free version records organic rank only: Rank and Absolute rank, up to 200 keywords a run, as CSV or Excel. Pro, and the 14-day trial with no card, adds sponsored product, collection, carousel, store, brand video and product video placements, each as its own row, plus postcode checks and scheduled runs. Scheduled runs need your computer on and Chrome open. The sign-in state is whatever your browser's Amazon session is; the export does not record it, so keep it fixed.</p>
+  <p>Our own Chrome extension, <a href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/">Live Amazon Rank Tracker</a>, is one option of the first kind. It checks today's search in your browser for any ASINs you enter. The free version records organic rank only: Rank and Absolute rank, up to 200 keywords a run, as CSV or Excel. Pro, and the 14-day trial with no card, adds sponsored product, Sponsored Products video, collection, Sponsored Brands video, store and carousel placements, each as its own row, plus postcode checks, scheduled runs and a Trends view. Scheduled runs need your computer on and Chrome open. Searches use your browser's Amazon session, signed in or out as you are; the export does not record which, so keep it the same.</p>
 
   <h2>How do I read the results?</h2>
   <ul>
-    <li><strong>No ad found does not mean the campaign is off.</strong> The ad may have been out of budget, outside its schedule, outbid at that moment, or not shown for that location or sign-in state.</li>
-    <li><strong>Compare like with like:</strong> same marketplace, same postcode, same sign-in state, similar time of day.</li>
-    <li><strong>Use the console and the page together.</strong> If your top-of-search impression share is low and your checks rarely find the ad at the top of page 1 at the hours that matter to you, that is a reason to review the bid or placement adjustment for that campaign. If the share is high but your checks miss the ad in the afternoon, look at budget and ad schedule first.</li>
-    <li><strong>Look at organic and sponsored side by side.</strong> An ad above your own organic listing on the same search is worth knowing about when you decide where to spend.</li>
+    <li><strong>No ad found does not mean the campaign is off.</strong> The ad may have been out of budget, outside its schedule, outbid at that moment, or not shown for that location or sign-in choice.</li>
+    <li><strong>Compare like with like:</strong> same marketplace, same Deliver-to postcode, same location the search is made from, same sign-in choice, similar time of day. A VA searching from another country will see different ads from you, even with the same Deliver-to address.</li>
+    <li><strong>Use the console and the page together.</strong> If top-of-search impression share is low and your checks rarely show the ad at the top of the page at the hours that matter, review the bid and the top-of-search placement adjustment. If the share is high but afternoon checks miss the ad, look at budget and ad schedule first.</li>
+    <li><strong>Look at organic and sponsored side by side.</strong> An ad sitting just above your own organic listing may be paying for a click you would have got anyway; an ad on a term where you rank on page 3 may be your only visibility there. Either can be the right call; seeing both is what lets you decide.</li>
+    <li><strong>Read competitors the same way, as signals rather than bids.</strong> Note which ad types a competitor runs on each key term, how high they appear and when. A top position can come from bid, relevance or sales history. An ad present in the morning and gone later may mean a budget running out; one that appears only later in the day fits an ad schedule or a bid change. Comparing brands you already know are strong or weak (from sales estimates, reviews or your own market knowledge) shows which ad patterns go with success, and where your own approach differs.</li>
   </ul>
 
   <h2>Quick questions</h2>
   <h3>Does Amazon show my ad's position on the search page?</h3>
-  <p>Not per search. The console reports placement groups, top-of-search impression share, and impression share and impression rank for search terms.</p>
+  <p>Not per search. The console reports placement groups, top-of-search impression share, and impression share and impression rank for search terms, for your own ads.</p>
   <h3>Is search term impression rank the same as ad position?</h3>
-  <p>No. It ranks advertisers by how many impressions they won on a search term. Position is where the ad sat on a given results page.</p>
+  <p>No. It ranks advertisers by how many impressions they won on a search term, within that ad type. Position is where the ad sat on a given results page.</p>
+  <h3>Can I track my competitors' sponsored ads?</h3>
+  <p>Yes. Anything a shopper can see, you can record for any ASIN: which ad types a competitor runs on your key terms (product tile, product video, brand banner, brand video, store), how high those ads appear, and at what times of day. That is presence, not their bid, but tracked over weeks for strong and weak competitors alike it shows which advertising patterns go with success on those terms, and how your own compares.</p>
+  <h3>Is this useful for product research or a launch?</h3>
+  <p>Yes. Before or during a launch, checking the main search terms in a niche shows how crowded the first page is with ads, which ad types the leading brands use, and where organic results start. Cost and conversion still come from your own tests and the console, but the page view helps you choose which terms and ad types to test first.</p>
   <h3>How often should I check?</h3>
-  <p>For ads, at least at the times of day your sales come in. Several checks a day show changes from budgets, ad schedules and competitors that one daily check misses.</p>
+  <p>Start often, then settle. For a week or two, check your key terms several times a day to see how much positions normally move. That spread tells you how many checks to combine into one reading (for example, a daily average of several checks) and how often to check after that. Keep checks at the times of day your sales come in, and use a tool that lets you choose both the timing and the averaging.</p>
   <h3>Should I check signed in or signed out?</h3>
-  <p>Signed out for a view not tied to one account's history; signed in when you need to see ads tied to an account. Choose one and keep it.</p>
+  <p>Signed out for a view not tied to one shopping account's history; signed in when you need to see the ads tied to that shopping account, which in our checks included more Sponsored Products video. Choose one and keep it.</p>
 
   <div class="cta">
     <p><strong>Related:</strong> <a href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/guides/rank-differs-between-tools/">Why is my Amazon keyword rank different in different tools?</a></p>
