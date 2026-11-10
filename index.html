@@ -455,6 +455,22 @@
       margin-bottom: 16px;
       text-align: center;
     }
+    .guide-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .guide-card {
+      display: block;
+      background: rgba(13, 21, 32, 0.72);
+      border: 1px solid rgba(31, 208, 214, 0.35);
+      border-radius: 10px;
+      padding: 16px 18px;
+      text-decoration: none;
+    }
+    .guide-card:hover, .guide-card:focus-visible { border-color: #1fd0d6; }
+    .guide-card__title { display: block; color: #ffffff; font-weight: 600; font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+    .guide-card__text { display: block; color: #aab4be; font-size: 13px; line-height: 1.5; }
     /* Native details/summary accordion: answers stay in the HTML for crawlers, any number can be open */
     .faq__item {
       background: rgba(13, 21, 32, 0.72);
@@ -676,6 +692,7 @@
         <summary><h3>Which ad placements does it detect?</h3></summary>
         <div class="faq__answer">
           <p>Organic results plus sponsored product, collection, carousel, store, and video placements (brand video and sponsored product video are recorded as separate rows). CSV and Excel exports have one row per placement type, so you can see where each of your ads appears next to your organic rank. Free shows organic Rank and Absolute rank; sponsored and brand placements are Pro (and included in the trial).</p>
+          <p>More detail: <a href="guides/sponsored-ad-rank/">How do I track where my sponsored ads rank in Amazon search?</a></p>
         </div>
       </details>
 
@@ -695,7 +712,6 @@
 
       <h2 id="faq-troubleshooting-title" class="faq__title faq__title--group">When the numbers look different</h2>
       <p class="faq__updated">Amazon search changes with location, sign-in, device and time. These answers explain what you are seeing.</p>
-      <p class="faq__updated">Longer guides: <a href="guides/rank-differs-between-tools/">Why is my Amazon keyword rank different in different tools?</a> &middot; <a href="guides/sponsored-ad-rank/">How do I track where my sponsored ads rank?</a></p>
 
       <details class="faq__item" id="faq-jumps">
         <summary><h3>Why does my Rank number jump around from day to day?</h3></summary>
@@ -748,6 +764,18 @@
           <p>The keyword is still listed, and its rank result cell is left empty, so you can see that the ASIN was searched for and not found within the pages you chose. Raise the search depth (up to 7 pages) to look further down. For narrow keywords Amazon sometimes offers fewer pages than your setting; the extension checks as many as Amazon shows. On Free only organic results are recorded, so an ASIN that appears only as an ad also shows an empty rank.</p>
         </div>
       </details>
+      <h2 id="guides-title" class="faq__title faq__title--group">Guides</h2>
+      <p class="faq__updated">Longer answers to two common questions.</p>
+      <div class="guide-cards">
+        <a class="guide-card" href="guides/sponsored-ad-rank/">
+          <span class="guide-card__title">How do I track where my sponsored ads rank in Amazon search?</span>
+          <span class="guide-card__text">What the ad console reports, what it leaves out, and how to see your ad's actual position on the page.</span>
+        </a>
+        <a class="guide-card" href="guides/rank-differs-between-tools/">
+          <span class="guide-card__title">Why is my Amazon keyword rank different in different tools?</span>
+          <span class="guide-card__text">Timing, location, sign-in, counting rules, search depth and variations, and how to get numbers you can compare.</span>
+        </a>
+      </div>
     </section>
 
     <hr class="section-divider" aria-hidden="true">
