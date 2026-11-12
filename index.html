@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Live Amazon Rank Tracker — Today's Search, Key Placements</title>
   <meta name="description" content="Check today's Amazon search for one or more ASINs. Organic plus key sponsored and brand placement types. CSV or Excel export. Pro: scheduled rank checks, postcode-aware Deliver-to, unlimited keywords, and Trends over your export folder. Free Excel workbook for rank over time.">
+  <link rel="canonical" href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -863,5 +864,32 @@
       })();
     </script>
   </div>
+<script>
+  // Campaign tags: if this page was opened with utm_* parameters, pass them on to the
+  // store buttons and to our own pages, so the store listing's analytics can tell where
+  // a visit started. No cookies, no storage, nothing is sent to us.
+  (function () {
+    var q, tags = [];
+    try { q = new URLSearchParams(location.search); } catch (e) { return; }
+    q.forEach(function (v, k) {
+      if (/^utm_(source|medium|campaign|content|term)$/.test(k) && /^[A-Za-z0-9._~-]{1,80}$/.test(v)) tags.push([k, v]);
+    });
+    if (!tags.length) return;
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      try {
+        var raw = a.getAttribute('href');
+        if (!raw || raw.charAt(0) === '#' || /^(mailto|tel|javascript):/i.test(raw)) return;
+        var u = new URL(a.href, location.href), h = u.hostname;
+        if (!(h === location.hostname || h === 'miltonstylesllc.github.io' ||
+              h === 'chromewebstore.google.com' || h === 'microsoftedge.microsoft.com')) return;
+        var tagged = false;
+        u.searchParams.forEach(function (v, k) { if (/^utm_/.test(k)) tagged = true; });
+        if (tagged) return;
+        tags.forEach(function (t) { u.searchParams.set(t[0], t[1]); });
+        a.href = u.toString();
+      } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
